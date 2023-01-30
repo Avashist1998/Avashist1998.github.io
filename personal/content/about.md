@@ -1,11 +1,11 @@
 ---
 author: "Abhay Vashist"
 title: "About me"
-auther: "me"
+auther: "Abhay Vashist"
 ---
 
 
-![Abhay Vashist, the profile image](https://avashist1998.github.io/img/profile.jpg)
+![Abhay Vashist, the profile image](../static/img/profile.jpg)
 I am experienced in HTML, CSS, Java, Matlab, Python, and Solidworks. 
 I am also proficient in coding SQLite databases and create Django bases web application. 
 I also have experience working with microcontrollers as PID for a system and to filter incoming singles. 
