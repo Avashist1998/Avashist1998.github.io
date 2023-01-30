@@ -5,7 +5,7 @@ auther: "Abhay Vashist"
 ---
 
 
-![Abhay Vashist, the profile image](../static/img/profile.jpg)
+![Abhay Vashist, the profile image](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/img/profile.jpg)
 I am experienced in HTML, CSS, Java, Matlab, Python, and Solidworks. 
 I am also proficient in coding SQLite databases and create Django bases web application. 
 I also have experience working with microcontrollers as PID for a system and to filter incoming singles. 
