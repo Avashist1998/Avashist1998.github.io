@@ -1,0 +1,48 @@
+baseURL: https://avashist1998.github.io
+languageCode: en-us
+title: Abhay Vashist
+theme: "PaperMod"
+# paginate: 6
+
+# minify:
+#     disableXML: true
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+menu:
+  main:
+  - name: Search
+    url: search/
+    weight: 5
+  - name: Archive
+    url: archives
+    weight: 10
+  - name: Tags
+    url: tags/
+    weight: 10
+  - name: About
+    url: about/
+    weight: 15
+
+params:
+  title: PersonalSite
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+  homeInfoParams:
+    Title: Hi there
+    Content: >
+      I am Abhay Vashist and welcome to my site. I am a software developer, and runner. Checkout some of my recent projects or visit the about page to learn about me.
+
+  socialIcons:
+      - name: github
+        url: "https://github.com/avashist1998"
+      - name: linkedIn
+        url: "https://www.linkedin.com/in/abhayvashist"
+
+outputs:
+    home:
+        - HTML
+        - JSON
