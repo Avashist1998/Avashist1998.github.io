@@ -4,9 +4,9 @@ title: "Core Renal biopsy Project"
 date: "2019-12-15"
 description: "Showcasing the Core Renal biopsy Project"
 tags: ["cat-design", "protoyping"]
-categories: ["projects", "Senior Design"]
-series: ["School Projects"]
-aliases: [school-projects"]
+series: ["SchoolProjects"]
+aliases: ["/core_renal_biopsy"]
+weight: 3
 ShowToc: true
 TocOpen: true
 ---

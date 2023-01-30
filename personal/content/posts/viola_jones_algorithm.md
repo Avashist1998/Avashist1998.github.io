@@ -4,9 +4,9 @@ title: "Viola-Jones Algorithm"
 date: "2019-11-29"
 description: "Showcasing the Viola Jones Algorithm Implementation"
 tags: ["machine learning", "python", "computer vision", "digital image processing"]
-categories: ["projects", "machine-learning-projects"]
-series: ["School Projects"]
-aliases: [school-projects"]
+series: ["SchoolProjects"]
+aliases: ["/viola_jones_algorithm"]
+weight: 1
 ShowToc: true
 TocOpen: true
 ---

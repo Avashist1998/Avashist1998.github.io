@@ -4,9 +4,9 @@ title: "PPG Singal Extraction"
 date: "2017-12-15"
 description: "Showcasing the PPG Singal Extraction"
 tags: ["python", "signal-processing", "bioelectronics"]
-categories: ["projects"]
-series: ["School Projects"]
-aliases: [school-projects"]
+series: ["SchoolProjects"]
+aliases: ["/ppg_signal_extraction"]
+weight: 2
 ShowToc: true
 TocOpen: true
 ---
