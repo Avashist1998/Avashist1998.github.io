@@ -156,7 +156,7 @@ function toggleInsertPlay(dataObject) {
 ```
 
 ### Final Animation
-![](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/images/insert_sort.gif)
+![](/static/images/insert_sort.gif)
 
 
 ## Final Thoughts
