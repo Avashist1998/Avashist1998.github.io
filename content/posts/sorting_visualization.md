@@ -5,10 +5,13 @@ date: "2022-12-29"
 description: "Visualization of different sorting algorithms"
 tags: ["visualization", "typescript"]
 series: ["Personal Project"]
-aliases: ["/sorting_visualzation"]
+aliases: ["/sorting_visualization"]
 weight: 1
 ShowToc: true
 TocOpen: true
+cover:
+    image: https://www.youcubed.org/wp-content/uploads/2019/08/Sorting-Image.jpg
+
 ---
 
 I build a sorting visualization tool: [Check it out](https://avashist1998.github.io/sortingVisualization/)
@@ -24,12 +27,10 @@ I build a sorting visualization tool: [Check it out](https://avashist1998.github
 
 ### Code
 
-All of the code avaiable on [Github](https://github.com/Avashist1998/sortingVisualization).
-
-
+All of the code available on [Github](https://github.com/Avashist1998/sortingVisualization).
 
 ### Data Object
-The `SortData`type wraps all the information into a one bundle that is needed for visualization.
+The `SortData`type wraps all the information into a bundle that is needed for visualization.
 
 ```typescript
 type SortData = {
@@ -80,12 +81,12 @@ function arrayToSortData (nums: number[], color: string) {
 
 ```
 
-### Visulization 
+### Visualization  
 
-[D3](https://d3js.org) is a javascript visuliaztion libary build on top of [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). The libarary provides a lot of helpful components for generating different graphics.
+[D3](https://d3js.org) is a javascript visualization library build on top of [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). The library provides a lot of helpful components for generating different graphics.
 I would highly recommend you check them out for some next level interactive visualizations.
 
-For my project I used the `rect` shape to render a histogram which represents the different values provided by the users and colors are used to indicate the state of the different values. The colors of the histogram are used to communicate the transition of each step.
+For my project I used the `rect` shape to render a histogram which represents the different values provided by the users and colors are used to indicate the state of the different values. The colors of the histogram is used to communicate the transition of each step.
 
 
 
@@ -94,7 +95,8 @@ For my project I used the `rect` shape to render a histogram which represents th
 - Green: Sorted
 - RED: Selected
 - Yellow: Pointer location
-- Tile: Pivote
+- Tile: Pivot
+
 
 ```javascript
 const svg = d3.select("#"+ id)
@@ -157,6 +159,6 @@ function toggleInsertPlay(dataObject) {
 ![](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/images/insert_sort.gif)
 
 
-### Final Thoughts
+## Final Thoughts
 
-I had a great time building the visualization, but looking back at the whole processes, I should have seperated the sorting logic and visual elements. I should have implemented a MVC design in the visualization, making the visualization reusable and expandable. I also mastered `D3.js` and will use when I can in the future. I hope you enjoyed looking at the different sorting algorithms, and comparing them.
+I had a great time building the visualization, but looking back at the whole processes, I should have separated the sorting logic and visual elements. My recommendation to fellow coders would be to implement a MVC design for the visualization, making the code reusable and expandable. `D3.js` is a great tool for data visualization, and will use it in the future. I hope you enjoyed looking at the different sorting algorithms, and comparing them.

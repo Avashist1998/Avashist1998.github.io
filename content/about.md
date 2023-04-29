@@ -7,9 +7,11 @@ auther: "Abhay Vashist"
 
 
 ![Abhay Vashist, the profile image](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/images/profile.jpg)
-I am experienced in HTML, CSS, Java, Matlab, Python, and Solidworks. 
+
+I am experienced in HTML, CSS, Java, Matlab, Python, and SolidWorks. 
+
 I am also proficient in coding SQLite databases and create Django bases web application. 
-I also have experience working with microcontrollers as PID for a system and to filter incoming singles. 
+I also have experience working with micro-controllers as PID for a system and to filter incoming singles. 
 I have also developed a user interface for multiple application in iOS and Android using android studio and Xcode.
 
 
@@ -45,7 +47,7 @@ I have also developed a user interface for multiple application in iOS and Andro
 
 ### Where I have worked
 
-#### Argo AI, Austin, Texas &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Febuary 2022 - November 2022
+#### Argo AI, Austin, Texas &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; February 2022 - November 2022
 
 Software Developer
 
@@ -68,7 +70,7 @@ Electrical Engineering - Information Science and Systems
 
 #### Bachelor of Science, Texas A&M University &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; August 2016 - August 2019
 
-Biomedical Engrineering - Bioinstrumentation & Bioimaging
+Biomedical Engineering - Bioinstrumentation & Bioimaging
 
 
 ---
