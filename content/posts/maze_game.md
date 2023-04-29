@@ -9,7 +9,6 @@ aliases: ["/maze_game"]
 weight: 1
 ShowToc: true
 TocOpen: true
-draft: true
 cover:
     image: https://images.nightcafe.studio/jobs/JIODE2KiPFTlX8mPB4Ry/JIODE2KiPFTlX8mPB4Ry--1--r2fxo_2x.jpg
 ---
@@ -104,6 +103,25 @@ def get_surrounding_cell_count(cell, maze):
         s_cell_count += 1
     return s_cell_count
 ```
+- To create a exits and entry for the maze once the maze is generated. We break make the row and bottom row walls into paths which are adjacent to a path. This creates a long and complex path.
+```python
+def create_entry_exit(maze):
+    row, col = len(maze), len(maze[0])
+    start_point, exit_point = (0, 0), (row - 1, col - 1)
+    # Set entrance and exit
+    for i in range(col):
+        if maze[1][i] == MazeGameObject.PATH.value:
+            maze[0][i] = MazeGameObject.PLAYER_TILE.value
+            start_point = (0, i)
+            break
+
+    for i in range(col - 1, 0, -1):
+        if maze[row - 2][i] == MazeGameObject.PATH.value:
+            maze[row - 1][i] = MazeGameObject.GOAL.value
+            exit_point = (row - 1, i)
+            break
+    return start_point, exit_point, maze
+```
 - Generation the maze 
     - The first step to generating the maze is initializing the board using `init_maze` function
         ```python
@@ -155,7 +173,7 @@ def get_surrounding_cell_count(cell, maze):
             Case 1: Path - Wall - Empty
             Case 2: Empty - Wall - Path
         ```
-    - According to the algorithm we break the wall when it does not connect sperate two paths. After a wall is identified that fits the condition we make the wall a path. We also make the 3 new surrounding empty cells into walls and add them to the wall_list to be processed.
+    - According to the algorithm we break the wall when it does not connect two paths. After a wall is identified that fits the condition we make the wall a path. We also make the 3 new surrounding empty cells into walls and add them to the `wall_list` to be processed.
         ```python
         if (rand_wall[0] > 0 and rand_wall[0] + 1 < n_row):
             # row case
@@ -181,9 +199,10 @@ def get_surrounding_cell_count(cell, maze):
 
 ### Maze Visualization
 
-Visualizing the maze requires two main functions, `draw_maze` and `draw_tile` which are defined (here)[https://github.com/Avashist1998/maze_game/blob/07cb8f2943dea72f322c4f02b75301312be9b7a6/src/maze_visualization/maze_game_visualization.py#L186-L234]. The function use a data class called  `Tile` to pass the tile visual attributes. 
+Visualizing the maze requires two main functions, `draw_maze` and `draw_tile` which are defined [here](https://github.com/Avashist1998/maze_game/blob/07cb8f2943dea72f322c4f02b75301312be9b7a6/src/maze_visualization/maze_game_visualization.py#L186-L234). The function communicate using the two data classes called  `Tile` and `ScreenSize`. This allows the visualization to be agnotic to the value of the tile, and treat each tile the same.
 
 ```python
+from dataclasses import dataclass
 @dataclass
 class Tile:
     """Maze tile data object definition."""
@@ -199,7 +218,7 @@ class ScreenSize:
     top_left_x: int
     top_left_y: int
 ```
-In the `draw_maze` function, the first step to get the total number of dimension and define the total screen size of the maze in pixels. The maze will take up all of the space on the screen except 50 px on the right and left and 75 px and 25 px on the top and bottom respectivly. Once we have the maze size in pixels we need to compute the size of the tiles using int divisions. Then I iterate throught the grid set the appropirate tile color based on the grid cell value. After which the tile top left corredictate is a calucated by mutiplying the index with tile size and shifting for maze top right value. Then draw tile is called to render the tile on the screen.
+In the `draw_maze` function, the first step to get the total number of dimension and define the total screen size of the maze in pixels. The maze will take up all of the space on the screen except 50 px on the right and left and 75 px and 25 px on the top and bottom respectively. Once we have the maze size in pixels we need to compute the size of the inidivials tiles using integer divisions. Then iterate throught the grid and set the appropirate tile color based on the grid cell value. After which the tile top left corredictate is computed by mutiplying the index with tile size and adding the maze board top right point corrdinates respectively. We call the `draw_tile` function to render the tile on the screen.
 
 ```python
 board = maze.get_board() # maze generated previously
