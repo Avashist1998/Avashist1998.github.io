@@ -7,7 +7,9 @@ auther: "Abhay Vashist"
 
 
 ![Abhay Vashist, the profile image](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/images/profile.jpg)
+
 I am experienced in HTML, CSS, Java, Matlab, Python, and SolidWorks. 
+
 I am also proficient in coding SQLite databases and create Django bases web application. 
 I also have experience working with micro-controllers as PID for a system and to filter incoming singles. 
 I have also developed a user interface for multiple application in iOS and Android using android studio and Xcode.

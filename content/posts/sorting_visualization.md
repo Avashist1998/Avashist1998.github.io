@@ -11,6 +11,7 @@ ShowToc: true
 TocOpen: true
 cover:
     image: https://www.youcubed.org/wp-content/uploads/2019/08/Sorting-Image.jpg
+
 ---
 
 I build a sorting visualization tool: [Check it out](https://avashist1998.github.io/sortingVisualization/)
@@ -95,6 +96,7 @@ For my project I used the `rect` shape to render a histogram which represents th
 - RED: Selected
 - Yellow: Pointer location
 - Tile: Pivot
+
 
 ```javascript
 const svg = d3.select("#"+ id)
