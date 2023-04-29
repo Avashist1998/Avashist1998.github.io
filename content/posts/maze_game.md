@@ -18,28 +18,28 @@ cover:
 I build maze solving game using `Pygame`: [Check it out](https://avashist1998.github.io/maze_game/)
 
 ## What Technologies I used
-- Github Pages (Hosting & Deployment) 
-- Pygame (Visualization & Keyboard Events)
-- Python (Game Logic & Game State management)
-- Pygbag (Python to wasm tool for Web Distribution)
-- Github (Github Repo Storage)
+- Python (Programming Language)
 - Pytest (Unit testing)
+- Pygame (Visualization & Keyboard Events)
+- Pygbag (Python to wasm tool for Web Distribution)
+- Github Pages (Hosting) 
 - Github Action (CI pipeline)
+- Github (Version Tracking)
 
 ## How did I build It
 
-### Github
-[Github](https://github.com/avashist1998/maze_game)
+### Codebase
+[Github Repo](https://github.com/avashist1998/maze_game)
 
 ### Design
-The game follows a MVC(Mode View Controller) architecture, and is based on wesleywerner's [repo](https://github.com/wesleywerner/mvc-game-design).
+The game follows an MVC(Model View Controller) architecture and is based on Wesleywerner’s [repo](https://github.com/wesleywerner/mvc-game-design). I would highly recommend checking his repo out for clarification.
 
-- Files
-    - `main.py`: Entry point for the main application
+- Important Files
+    - `main.py`: Entry point for the game application
     - `src` : Containing all of the python source code
-        - `logger.py`: Defines the logger
+        - `logger.py`: Defines the logger of the game
         - `event.py`: Defines different type of event in the game environment 
-        - `model.py`: Defines the Game Engine for the game
+        - `model.py`: Defines the Game Engine of game
         - `view.py`: Defines the Visual of the game
         - `maze_game`: Contains the logic and maze generation code.
         - `maze_visualization`: Contains helper function for game visuals 
@@ -47,10 +47,10 @@ The game follows a MVC(Mode View Controller) architecture, and is based on wesle
 
 ### Maze Generation
 
-For the maze generation I used the (Randomized Prim's algorithm)[https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_Prim's_algorithm]. The algorithm is a very popular choose when generating mazes, and I followed this (article)[https://medium.com/swlh/fun-with-python-1-maze-generator-931639b4fb7e] by Orestis Zekai. The article was helpful for the basic setup, but I had difficulty following along in the final parts, so I will be presenting my implementation here. Check out the (Code)[https://github.com/Avashist1998/maze_game/blob/develop/src/maze_game/maze_generation.py] on Github for the final version.
+For the maze generation I used the [Randomized Prim's algorithm](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_Prim's_algorithm). The algorithm is a very popular choose when generating mazes, and I followed this [article](https://medium.com/swlh/fun-with-python-1-maze-generator-931639b4fb7e) by Orestis Zekai. The article was helpful for the basic setup, but I had difficulty following along in the final parts, so I will be presenting my implementation here. Check out the [file](https://github.com/Avashist1998/maze_game/blob/develop/src/maze_game/maze_generation.py) on Github for the final version.
 
 #### Maze Board Value Enum
-The enum help with the readability of code.
+The MazeGameObject enum help with the readability of code, and creates a layer of abstraction between the values of the board and the maze generation code.
 ```python
 class MazeGameObject(Enum):
     PATH = 0
@@ -60,7 +60,7 @@ class MazeGameObject(Enum):
     PLAYER_TILE = 7
     VISITED_TILE = 3
 ```
-### Code Break down
+### Maze Generation Code breakdown
 
 - Initialize the maze with Empty object values (Exactly same as Zekai)
 ```python
@@ -71,22 +71,14 @@ def init_maze(height, width):
         maze.append(maze_row)
     return maze
 ```
-- Define a start position at random that is not on the edge of the grid. (Exactly same as Zekai)
+- Pick a start position by randomly selecting a location in the maze that does not lie on the edge. (Exactly same as Zekai)
 ```python
 from random import random
-def get_star_pos(row, col):
-    start_row, start_col = int(random() * row), int(random() * col)
-    if start_row == 0:
-        start_row += 1
-    if start_row == row - 1:
-        start_row -= 1
-    if start_col == 0:
-        start_col += 1
-    if start_col == col - 1:
-        start_col -= 1
+def get_start_pos(row, col):
+    start_row, start_col = int(random() * (row-2))+1, int(random() * (col-2))+1
     return start_row, start_col
 ```
-- Function fills the remains cells with walls (Exactly same as Zekai)
+- Function fills the remains cells with wall value (Exactly same as Zekai)
 ```python
 def fill_walls(maze)
     for i, _ in enumerate(maze):
@@ -94,7 +86,7 @@ def fill_walls(maze)
             if maze[i][j] == MazeGameObject.EMPTY.value:
                 maze[i][j] = MazeGameObject.WALL.value
 ```
-- Function which count the number of walls surrounding a given cell in the maze. The 4 cases are checked using the `if statements`, if the cells exists and cell has the same value as the path, the count is incremented. 
+- To get the number of paths surrounding a given cell in the maze, we check the surrounding cells using `if statements`. If the cells inside the bounds of the grid and cell has the same value as the path, the count is incremented.
 ```python
 def get_surrounding_cell_count(cell, maze):
     s_cell_count = 0
@@ -113,16 +105,16 @@ def get_surrounding_cell_count(cell, maze):
     return s_cell_count
 ```
 - Generation the maze 
-    - The first to generating the maze is initializing the board using `init_maze` function
+    - The first step to generating the maze is initializing the board using `init_maze` function
         ```python
             maze = init_maze(n_row, n_col)
         ```
-    - Then we define the seed position of the maze using the `get_star_pos` function, and set the `start_pos` to the value of a path cell.
+    - Then we define the seed position of the maze using the `get_start_pos` function, and set the `start_pos` to the value of a path cell.
         ```python
-            start_pos = get_star_pos(maze)
+            start_pos = get_start_pos(maze)
             maze[start_pos[0]][start_pos[1]] = MazeGameObject.PATH.value
         ```
-    - Then as for the algorithm we set the surrounding positions of the `start_pos` to walls.
+    - We assign the surrounding cells to the `start_pos` to the value of a `WALL`.
         ```python
             maze[start_pos[0] - 1][start_pos[1]] = MazeGameObject.WALL.value
             maze[start_pos[0]][start_pos[1] - 1] = MazeGameObject.WALL.value
@@ -137,7 +129,7 @@ def get_surrounding_cell_count(cell, maze):
             wall_list.add((start_pos[0], start_pos[1] + 1))
             wall_list.add((start_pos[0] + 1, start_pos[1]))
         ```
-    - After which we want to repeated the following steps unit we run out of walls to process. The repetition is implemented with a `while` loop which runs till the `wall_list` is empty. Inside the first step is to pick a wall from the list at random. Then we count the total number of cells surrounding the wall using the ` get_surrounding_cell_count` function. We check if there are more than one surround path to the wall, if there is we remove the wall from the list since the wall is process, and we fill the remain cells of the grid using the `fill_walls` function.
+    - After which we want to repeated the following steps unit we run out of walls to process. The repetition is implemented with a `while` loop which runs till the `wall_list` is empty. We pick a wall from the list at random, then we count the total number of cells surrounding the selected wall using the ` get_surrounding_cell_count` function. We check if there are more than one surround path to the wall, if there is we remove the wall from the list since the wall is process. Once all the cells are processed we fill the remain cells of the grid using the `fill_walls` function. Then we create an entry and exit in the maze using `create_entry_exit` function.
         ```python
         from random import choices
         while wall_list:
@@ -150,8 +142,8 @@ def get_surrounding_cell_count(cell, maze):
         entry_point, exit_point, maze = create_entry_exit(maze)
         return entry_point, exit_point, maze
         ```
-    - In the wall processing block there is only one path cell around the wall, there are two main cases. We check if the cell is on the boarder of the grid, using two if statments. Inside each of the two cases we have two sub cases, as shown below.
-    ```
+    - Inside the wall processing block there is a row case and a col case, and they are checked using if statements. Inside each of the two cases we have two sub cases, as shown below. Please read the maze wiki for clerification.
+        ```markdown
         Row Cases:
             Case 1:         Case 2:
                 Path               Empty
@@ -162,12 +154,13 @@ def get_surrounding_cell_count(cell, maze):
         Col Cases:
             Case 1: Path - Wall - Empty
             Case 2: Empty - Wall - Path
-    ```
+        ```
     - According to the algorithm we break the wall when it does not connect sperate two paths. After a wall is identified that fits the condition we make the wall a path. We also make the 3 new surrounding empty cells into walls and add them to the wall_list to be processed.
-    ```python
+        ```python
         if (rand_wall[0] > 0 and rand_wall[0] + 1 < n_row):
             # row case
-            if (maze[rand_wall[0] - 1][rand_wall[1]] == MazeGameObject.WALL.value and maze[rand_wall[0] + 1][rand_wall[1]] == MazeGameObject.PATH.value):
+            if (maze[rand_wall[0] - 1][rand_wall[1]] == MazeGameObject.WALL.value 
+                and maze[rand_wall[0] + 1][rand_wall[1]] == MazeGameObject.PATH.value):
                 # Case 2
                 maze[rand_wall[0]][rand_wall[1]] = MazeGameObject.PATH.value
 
@@ -178,12 +171,13 @@ def get_surrounding_cell_count(cell, maze):
                 wall_list.add((rand_wall[0] - 1, rand_wall[1]))
                 wall_list.add((rand_wall[0], rand_wall[1] + 1))
                 wall_list.add((rand_wall[0], rand_wall[1] - 1))
-            if (maze[rand_wall[0] + 1][rand_wall[1]] == MazeGameObject.WALL.value and maze[rand_wall[0] + 1][rand_wall[1]] == MazeGameObject.PATH.value):
+            if (maze[rand_wall[0] + 1][rand_wall[1]] == MazeGameObject.WALL.value 
+                and maze[rand_wall[0] + 1][rand_wall[1]] == MazeGameObject.PATH.value):
                 # Case 1
                     # Similar logic as case 2 block
         if (rand_wall[1] > 0 and rand_wall[1] + 1 < n_col):
             ### similar logic as above row cases
-    ```
+        ```
 
 ### Maze Visualization
 
@@ -211,7 +205,8 @@ In the `draw_maze` function, the first step to get the total number of dimension
 board = maze.get_board() # maze generated previously
 row, col = len(board), len(board[0])
 maze_board_top, maze_board_left = 75, 50
-maze_screen_width, maze_screen_height = self.screen_width - 100, self.screen_height - 100
+maze_screen_width = self.screen_width - 100 
+maze_screen_height = self.screen_height - 100
 tile_width, tile_height = maze_screen_width // col, maze_screen_height // row
 
 for i in range(row):
@@ -246,6 +241,9 @@ def draw_tile(self, tile):
                         tile.tile_space.top_left_y, tile.tile_space.width,
                         tile.tile_space.height), boarder_thickness)
 ```
+
+### Maze Animation 
+![](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/images/maze_solving.gif)
 
 ### Final Thoughts
 The maze game was a great project to learn pygame, and would recommned you to try building games using pygames. It is a great place to protype your ideas, and fantstic for indiviuals development to build something small and simple. I hope you guys enjoyed reading about my project, as much I enjoyed build the game.

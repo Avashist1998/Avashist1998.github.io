@@ -9,6 +9,8 @@ aliases: ["/sorting_visualization"]
 weight: 1
 ShowToc: true
 TocOpen: true
+cover:
+    image: https://www.youcubed.org/wp-content/uploads/2019/08/Sorting-Image.jpg
 ---
 
 I build a sorting visualization tool: [Check it out](https://avashist1998.github.io/sortingVisualization/)
