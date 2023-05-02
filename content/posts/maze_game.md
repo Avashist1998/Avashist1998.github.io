@@ -51,6 +51,7 @@ I used the [Randomized Prim's algorithm](https://en.wikipedia.org/wiki/Maze_gene
 #### Maze Board Value Enum
 
 The MazeGameObject enum improves the readability of the code and creates a layer of abstraction between the values on the game board and the maze generation code.
+
 ```python
 class MazeGameObject(Enum):
     PATH = 0
@@ -78,6 +79,7 @@ def get_start_pos(row, col):
     start_row, start_col = int(random() * (row-2))+1, int(random() * (col-2))+1
     return start_row, start_col
 ```
+
 - Function fills the empty cells with wall value (Exactly same as Zekai)
 ```python
 def fill_walls(maze)
@@ -104,7 +106,9 @@ def get_surrounding_cell_count(cell, maze):
         s_cell_count += 1
     return s_cell_count
 ```
+
 - To create entry and exit points for the maze after it's generated, we break the top and bottom walls of the maze into paths that are adjacent to existing paths. This creates a long and winding path that leads from the entrance to the exit of the maze. This step is important because it ensures that there is a clear path from the entrance to the exit, and that the maze is solvable.
+
 ```python
 def create_entry_exit(maze):
     row, col = len(maze), len(maze[0])
@@ -124,16 +128,20 @@ def create_entry_exit(maze):
     return start_point, exit_point, maze
 ```
 - Generation the maze 
+
     - The first step in generating the maze is to initialize the board using the `init_maze` function.
         ```python
             maze = init_maze(n_row, n_col)
         ```
     - We need to determine the starting position of the maze, which we achieve using the get_start_pos function. This function ensures that the starting position is always a path cell and returns its coordinates. We then set the start_pos variable to these coordinates.
+
         ```python
             start_pos = get_start_pos(maze)
             maze[start_pos[0]][start_pos[1]] = MazeGameObject.PATH.value
         ```
+
     - We assign the surrounding cells to the `start_pos` to the value of a `WALL`. Then we add the defined walls the our queue, in my case a set named `wall_list`
+
         ```python
             maze[start_pos[0] - 1][start_pos[1]] = MazeGameObject.WALL.value
             maze[start_pos[0]][start_pos[1] - 1] = MazeGameObject.WALL.value
@@ -154,6 +162,7 @@ def create_entry_exit(maze):
         - We continue this process until the `wall_list` is empty.
     - After all the cells are processed, we fill the remaining cells with walls using the fill_walls function.
     - Finally, we create an entry and exit in the maze using the `create_entry_exit` function.
+
         ```python
         from random import choices
         while wall_list:
@@ -166,6 +175,7 @@ def create_entry_exit(maze):
         entry_point, exit_point, maze = create_entry_exit(maze)
         return entry_point, exit_point, maze
         ```
+
     - The "Row case" and "Col case" refer to the two possibilities for which direction the wall being processed is oriented: either horizontally (a "row") or vertically (a "column").
         - For each of these cases, there are two sub-cases, based on whether the wall is at the edge of the grid or not.
         - If the wall being processed is not at the edge of the grid, the code checks the cells on either side of the wall to see if one of them is a path and the other empty (i.e. possible connected). If so, the wall is removed from the wall list, meaning it is no longer available to be broken down.
@@ -210,6 +220,7 @@ def create_entry_exit(maze):
 
 Visualizing the maze requires two main functions, `draw_maze` and `draw_tile` which are defined [here](https://github.com/Avashist1998/maze_game/blob/07cb8f2943dea72f322c4f02b75301312be9b7a6/src/maze_visualization/maze_game_visualization.py#L186-L234). The function communicates using two data classes called `Tile` and `ScreenSize`. This approach makes the visualization independent of the value of the tile and treats each tile equally. In other words, the function doesn't need to know what the tile represents in terms of the maze structure, it only needs to know the dimensions of the tile and the screen size to properly display it on the screen. This separation of concerns makes the code easier to maintain and modify in the future, as changes to the tile value won't affect the visualization code.
 
+
 ```python
 from dataclasses import dataclass
 @dataclass
@@ -227,10 +238,10 @@ class ScreenSize:
     top_left_x: int
     top_left_y: int
 ```
-
 In the `draw_maze` function, the first step is to calculate the total dimensions and define the screen size of the maze in pixels. The maze will occupy all of the space on the screen except for 50 pixels on the left and right sides, and 75 pixels on the top and 25 pixels on the bottom. Once we have the maze size in pixels, we need to compute the size of individual tiles using integer division.
 
 Next, we iterate through the grid and set the appropriate tile color based on the grid cell value. We calculate the tile's top-left coordinates by multiplying the index with the tile size and adding the maze board's top-left coordinates. Then, we call the `draw_tile` function to render the tile on the screen.
+
 
 ```python
 board = maze.get_board() # maze generated previously
