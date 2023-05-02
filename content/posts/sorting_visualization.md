@@ -30,7 +30,7 @@ I build a sorting visualization tool: [Check it out](https://avashist1998.github
 All of the code available on [Github](https://github.com/Avashist1998/sortingVisualization).
 
 ### Data Object
-The `SortData`type wraps all the information into a bundle that is needed for visualization.
+The `SortData` type serves as a wrapper that contains all the necessary information for visualizing the sorting algorithm.
 
 ```typescript
 type SortData = {
@@ -42,9 +42,9 @@ type SortData = {
 
 ### Data Validation and Object Creation
 #### Helper functions
-- `validateData` (Validates user input data)
-- `convertData` (Converts the input string in to array of numbers)
-- `arrayToSortData` (Converts a number array to SortData array)
+- The `validateData` function validates the user input data to ensure that it is in the correct format and can be processed. The function checks if the input string contains only numbers and commas, and returns an error message if it does not.
+- The `convertData` function takes the validated input string and converts it into an array of numbers. It splits the string by commas and converts each substring into a number. It returns an error message if the conversion fails.
+- The `arrayToSortData` function takes a number array and converts it into an array of `SortData` objects, which are used for visualization. The function assigns a `init_index` to each data point and sets its value, and color.
 
 ```typescript
 
@@ -83,14 +83,12 @@ function arrayToSortData (nums: number[], color: string) {
 
 ### Visualization  
 
-[D3](https://d3js.org) is a javascript visualization library build on top of [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). The library provides a lot of helpful components for generating different graphics.
-I would highly recommend you check them out for some next level interactive visualizations.
+[D3](https://d3js.org) is a javascript visualization library build on top of [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). The library provides a lot of helpful components for generating different graphics. I would highly recommend you check them out for some next level interactive visualizations.
 
-For my project I used the `rect` shape to render a histogram which represents the different values provided by the users and colors are used to indicate the state of the different values. The colors of the histogram is used to communicate the transition of each step.
-
-
+For the visualization, I used the `rect` shape to render a histogram which represents the different values provided by the users and colors are used to indicate the state of the different values. The colors of the histogram is used to communicate the transition of each step.
 
 #### Color Map
+
 - Blue: Base/Unsorted
 - Green: Sorted
 - RED: Selected
@@ -161,4 +159,4 @@ function toggleInsertPlay(dataObject) {
 
 ## Final Thoughts
 
-I had a great time building the visualization, but looking back at the whole processes, I should have separated the sorting logic and visual elements. My recommendation to fellow coders would be to implement a MVC design for the visualization, making the code reusable and expandable. `D3.js` is a great tool for data visualization, and will use it in the future. I hope you enjoyed looking at the different sorting algorithms, and comparing them.
+While I enjoyed building the sorting visualization, I realize in retrospect that I should have separated the sorting logic and visual elements for better reusability and expandability. My recommendation to fellow programmers would be to consider implementing an MVC design for visualizations. Additionally, I found `D3.js` to be a powerful tool for data visualization and look forward to using it again in the future. I hope you found the comparison of different sorting algorithms in the visualization to be informative and enjoyable.
