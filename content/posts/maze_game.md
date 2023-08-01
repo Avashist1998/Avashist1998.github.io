@@ -50,7 +50,7 @@ I used the [Randomized Prim's algorithm](https://en.wikipedia.org/wiki/Maze_gene
 
 #### Maze Board Value Enum
 
-The MazeGameObject enum improves the readability of the code and creates a layer of abstraction between the values on the game board and the maze generation code.
+The `MazeGameObject` enum improves the readability of the code and creates a layer of abstraction between the values on the game board and the maze generation code.
 
 ```python
 class MazeGameObject(Enum):
