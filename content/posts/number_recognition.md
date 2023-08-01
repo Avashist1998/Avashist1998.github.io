@@ -1,7 +1,7 @@
 ---
 author: "Abhay Vashist"
 title: "Digit Recognition"
-date: 2023-03-10
+date: "2023-03-10"
 description: "Help young students in drawing beautiful numbers"
 tags: ["react", "typescript", "python", "pytorch"]
 series: ["Personal Project"]
