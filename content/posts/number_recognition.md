@@ -13,35 +13,36 @@ cover:
     image: https://www.quickanddirtytips.com/wp-content/uploads/2022/04/how-to-write-numbers-compressor.png
 ---
 
-I build a number writing tool: [Check it out](https://avashist1998.github.io/digitRecognition/)
+I created a number writing tool that you can check out [here](https://avashist1998.github.io/digitRecognition/).
 
-## What Technologies I used
-- Github Pages (Hosting & Deployment) 
+## Technologies Used
+- Github Pages (Hosting & Deployment)
 - React (UI)
 - Python (Prototyping)
 - Pytorch (Model design and training)
 - Typescript (Model prediction)
+- Vite (Building Process)
 
-## How did I build It
-
-### Code
-
-All of the code available on [Github](https://github.com/Avashist1998/digitRecognition).
+## Codebase
+The entire codebase is available on [Github](https://github.com/Avashist1998/digitRecognition).
 
 ### Design
-The web application build using React frontend and LeNet model is used using Pytorch. The model is trained on the MNIST dataset.
+For this web application, I utilized a React frontend and implemented a LeNet model using Pytorch. The model was trained on the MNIST dataset.
 
-- Project Structure
-    - `model_exploration`: training and model exploration of the model
-        - `notebook.ipynb`: jupyter notebook containing the model exploration
-        - `LeNet5.py`: Pytorch definition of the model
-    - `ui`: React application for running the frontend with standard react structure
+
+
+#### Project Structure
+- `model_exploration`: This section covers the training and model exploration processes.
+    - `notebook.ipynb`: A Jupyter notebook containing the model exploration.
+    - `LeNet5.py`: The Pytorch definition of the model.
+- `ui`: This contains the React application that constitutes the frontend with a standard React structure.
+
 
 #### Model Training
-The model is build using Pytorch and the model code can be found [here](https://github.com/Avashist1998/digitRecognition/blob/master/model_exploration/src/LeNet5.py). The model is made up of 5 block, 3 of which are convolution blocks and 2 are feed forward blocks. `Tanh` is used a the activate function for all block except the final layer. The model is trained on the MNIST dataset for 10 epochs and has a test accuracy of `98.6%`.
+The Pytorch-based LeNet model code can be found [here](https://github.com/Avashist1998/digitRecognition/blob/master/model_exploration/src/LeNet5.py). The model consists of 5 blocks, with 3 being convolution blocks and 2 being feedforward blocks. The activation function used for all blocks except the final layer is `Tanh`. Training was conducted on the MNIST dataset for 10 epochs, resulting in an impressive test accuracy of `98.6%`.
 
 #### React UI
-The react application is build using `vite` and is a simple two page application. The first page is have basic landing page with general application and the second page is the actual application. The application is build using `typescript` and `react`. The application makes used of hash routeing since it is hosted on github pages. The application using HTML canvas for drawing of the numbers, and the prediction is made using the model trained above. The prediction is made using Oxxo's [blog](https://blog.oxxostudio.tw/posts/2017-12-26-mnist-pytorch/) on MNIST classification using Pytorch. Which allows us to use the model in the browser, without the need for a server.
+The React application is built using `vite` and comprises two simple pages. The landing page provides an overview of the application, while the second page hosts the actual tool. The application, built with `typescript` and `react`, uses hash routing for compatibility with Github Pages. For drawing the numbers, the application utilizes HTML canvas, and the predictions are made using the trained model. This prediction process is based on Oxxo's [blog](https://blog.oxxostudio.tw/posts/2017-12-26-mnist-pytorch/) on MNIST classification using Pytorch. The implementation enables us to perform predictions directly in the browser, eliminating the need for a server.
 
-### Final Thoughts
-The project was a great learning experience of deploying a model in the browser. The application combined machine learning and web development, and I learned how to build a machine learning algorithm into a final solution. The project was a great learning experience and I am happy with the final result.
+### Final Reflections
+This project was an enriching learning experience in deploying a machine learning model in the browser. Combining machine learning and web development, I successfully integrated a machine learning algorithm into a complete solution. The process provided valuable insights into building and deploying models for real-world applications. I am thrilled with the final outcome and the skills I acquired throughout the project.
