@@ -7,7 +7,7 @@ tags: ["FastAPI", "python", "React", "Typescript"]
 series: ["Personal Project"]
 aliases: ["/events_app"]
 weight: 1
-draft: true
+draft: false
 ShowToc: true
 TocOpen: true
 cover:
@@ -36,7 +36,7 @@ Github Repo: [Check it out](https://github.com/Avashist1998/events-app)
 
 ## How did I build It
 
-I implementing the business logic, in the application through FastAPI. There a total of 4 rest endpoints, for 4 tables making up the application. The database based use to manage the application data is SQLite. The UI experience written in Typescript using the react library. Material UI library was using for icons, and basic page components, and visuals through the use of tailwind. 
+I implemented the business logic in the FastAPI application. There are a total of four REST endpoints, for four tables making up the application. The database-based used to manage the application data is SQLite. The UI experience was written in Typescript using the react library. The Material UI library was used for icons, and components. The styling was done through the use of tailwind.
 
 ## Design and Architecture
 
@@ -115,9 +115,9 @@ I implementing the business logic, in the application through FastAPI. There a t
 
 
 ### Production Deployment
-![](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/images/event_app_architecture.png)
+![](https://raw.githubusercontent.com/Avashist1998/Avashist1998.github.io/main/static/images/events_app_architecture.png)
 
 ## Final Thoughts
 
-The major struggles, I faced in the the project was deploying the application in the cloud, and dealing with session cookies. I learned about REST route naming, how to work with session cookies, and working with a sqlite database. The application provides a simple template for strcture monolithic architectures. I also learning about the behavior of difference browser, and build reactive applications.
+I struggle a lot when deploying the project to the cloud and dealing with session cookies. I learned about REST route naming, how to work with session cookies, and how to work with a SQLite database. The application provides a simple template for structure monolithic architectures. I also had to design an application that would be mindful of the behavior of different browsers and screen sizes.
 
