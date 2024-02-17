@@ -2,7 +2,7 @@
 author: "Abhay Vashist"
 title: "Maze Game"
 date: "2023-02-10"
-description: "Maze Generation and Solving Game using Pygame"
+description: "Visualization of different sorting algorithms"
 tags: ["pygame", "python", "game"]
 series: ["Personal Project"]
 aliases: ["/maze_game"]
