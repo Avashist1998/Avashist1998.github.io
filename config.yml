@@ -1,7 +1,7 @@
 baseURL: https://avashist1998.github.io
 languageCode: en-us
 title: Abhay Vashist
-theme: "PaperMod"
+theme: ["PaperMod"]
 # paginate: 6
 
 # minify:
@@ -29,6 +29,7 @@ menu:
 params:
   title: PersonalSite
   defaultTheme: auto
+  dateFormat: "Jan 2, 2006"
   ShowReadingTime: true
   ShowCodeCopyButtons: true
   homeInfoParams:
