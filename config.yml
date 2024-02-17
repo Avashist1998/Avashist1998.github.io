@@ -29,7 +29,6 @@ menu:
 params:
   title: PersonalSite
   defaultTheme: auto
-  dateFormat: "Jan 2, 2006"
   ShowReadingTime: true
   ShowCodeCopyButtons: true
   homeInfoParams:
