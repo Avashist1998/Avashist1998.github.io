@@ -27,6 +27,7 @@ menu:
     weight: 15
 
 params:
+  social: true
   title: PersonalSite
   defaultTheme: auto
   ShowReadingTime: true
